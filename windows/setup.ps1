@@ -31,6 +31,8 @@ Install-FromChocolatey 'notion'
 Install-FromChocolatey 'sharex'
 Install-FromChocolatey 'everything'
 Install-FromChocolatey 'jabref'
+Install-FromChocolatey 'github-desktop'
+Install-FromChocolatey 'powertoys'
 
 
 

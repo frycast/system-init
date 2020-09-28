@@ -39,11 +39,31 @@ install_git() {
     wget https://raw.githubusercontent.com/frycast/system-init/master/common/.gitconfig --output-document ~/.gitconfig
     git config --global core.autocrlf false
 
-    ## Only setup cred manager if it's wsl
-    if [[ "$WSLENV" ]]
-    then
-        git config --global credential.helper '/mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe'
-    fi
+}
+
+install_R() {
+    echo -e '\e[0;33mInstalling R\e[0m'
+
+    sudo apt update
+    sudo apt -y upgrade
+    sudo apt -y install r-base
+}
+
+install_julia() {
+
+    wget https://julialang-s3.julialang.org/bin/linux/x64/1.5/julia-1.5.1-linux-x86_64.tar.gz
+    tar zxvf julia-1.5.1-linux-x86_64.tar.gz
+    export PATH="$PATH:~/julia-1.5.1/bin"
+    
+}
+
+setup_python3() {
+    echo -e '\e[0;33mInstalling Python 3\e[0m'
+
+    sudo apt update
+    sudo apt -y upgrade
+    sudo apt-get install pylint
+
 }
 
 
@@ -60,12 +80,15 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 ## Utilities
-sudo apt-get install unzip curl jq -y
+sudo apt-get install unzip curl jq mlocate -y
 
 # Create standard github clone location
 mkdir -p ~/code/github
 
 install_git
 install_docker
+install_R
+setup_python3
+install_julia
 
 rm -rf $tmpDir
