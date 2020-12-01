@@ -22,7 +22,9 @@ $basics = @(
     'notion',
     'adobereader',
     'sumatrapdf',
-    'wiztree'
+    'wiztree',
+    'honeyview',
+    'vim'
 )
 
 $other = @(
